@@ -5,8 +5,6 @@ import com.mapsTree.model.UserCreate;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
-import org.mapstruct.factory.Mappers;
-import org.springframework.context.annotation.Bean;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
         uses = {HomeLocationMapper.class}
@@ -31,5 +29,6 @@ public interface UserMapper {
     @Mapping(target = "country",source = "country")
     @Mapping(target = "timeOfCreation",source="timeOfCreation")
     com.mapsTree.model.User map(User user);
+    User map(com.mapsTree.model.User user);
 
 }

@@ -25,5 +25,9 @@ public class UserService {
         LOG.info("In userService findUser {}", user);
         return userRepository.findUserByUserNameandPassword(user.getUsername(),user.getPassword());
     }
+    public User findUserById(User user){
+        Integer id= Math.toIntExact(user.getId());
+        return userRepository.findUserById(id);
+    }
 
 }

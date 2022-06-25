@@ -45,10 +45,22 @@ public class UserController implements UserApi {
 
     @Override
     public ResponseEntity<User> userLoginPost(UserLogin userLogin){
+        LOG.info("POST /user/login");
         LOG.info("payload: {}",userLogin.toString());
         com.mapsTree.account.domain.User returnedUser = userService.findUser(userLoginMapper.map(userLogin));
         LOG.info("Retrieved User {}",returnedUser.toString());
         return new ResponseEntity<>(userMapper.map(returnedUser),(HttpStatus.ACCEPTED) );
+    }
+
+    @Override
+    public ResponseEntity<User> userIdGet(String id) {
+        LOG.info("GET /user/{id}");
+        LOG.info("payload: {}",id.toString());
+        Integer ID= new Integer(id);
+        User user= new User();
+        user.setId(ID);
+        com.mapsTree.account.domain.User returnedUser = userService.findUserById(userMapper.map(user));
+        return new ResponseEntity<>(userMapper.map(returnedUser),(HttpStatus.FOUND));
     }
 }
 
