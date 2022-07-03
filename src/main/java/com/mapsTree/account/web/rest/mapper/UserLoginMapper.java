@@ -13,7 +13,7 @@ public interface UserLoginMapper {
     @Mapping(target="username",source="username")
     @Mapping(target="password",source="password")
     com.mapsTree.account.domain.User map(UserLogin userLogin);
-    @Mapping(target="id",source = "id")
+    @Mapping(target="userId",source = "userId")
     @Mapping(target="username",source="username")
     @Mapping(target="age",source="age")
     @Mapping(target="phoneNumber",source="phoneNumber")

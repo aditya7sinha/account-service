@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class UserService {
     static final Logger LOG= LoggerFactory.getLogger(UserService.class);
@@ -18,6 +20,7 @@ public class UserService {
 
     public User insert(User user){
         LOG.info("In userService {}", user.toString());
+        user.setUserId(generateEvent().toString());
         return userRepository.save(user);
     }
 
@@ -26,8 +29,11 @@ public class UserService {
         return userRepository.findUserByUserNameandPassword(user.getUsername(),user.getPassword());
     }
     public User findUserById(User user){
-        Integer id= Math.toIntExact(user.getId());
+        String id= user.getUserId();
         return userRepository.findUserById(id);
+    }
+    public UUID generateEvent(){
+        return UUID.randomUUID();
     }
 
 }

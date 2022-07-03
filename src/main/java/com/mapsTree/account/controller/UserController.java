@@ -56,11 +56,10 @@ public class UserController implements UserApi {
     public ResponseEntity<User> userIdGet(String id) {
         LOG.info("GET /user/{id}");
         LOG.info("payload: {}",id.toString());
-        Integer ID= new Integer(id);
         User user= new User();
-        user.setId(ID);
+        user.setUserId(id.toString());
         com.mapsTree.account.domain.User returnedUser = userService.findUserById(userMapper.map(user));
-        return new ResponseEntity<>(userMapper.map(returnedUser),(HttpStatus.FOUND));
+        return new ResponseEntity<>(userMapper.map(returnedUser),(HttpStatus.OK));
     }
 }
 

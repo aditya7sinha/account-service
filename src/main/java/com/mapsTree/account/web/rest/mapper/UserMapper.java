@@ -20,7 +20,7 @@ public interface UserMapper {
     @Mapping(target = "country",source = "country")
     @Mapping(target = "timeOfCreation",source="timeOfCreation")
     User map(UserCreate userCreate);
-    @Mapping(target="id",source = "id")
+    @Mapping(target="userId",source = "userId")
     @Mapping(target="username",source="username")
     @Mapping(target="age",source="age")
     @Mapping(target="phoneNumber",source="phoneNumber")
@@ -29,6 +29,7 @@ public interface UserMapper {
     @Mapping(target = "country",source = "country")
     @Mapping(target = "timeOfCreation",source="timeOfCreation")
     com.mapsTree.model.User map(User user);
+    @Mapping(target="userId",source = "userId")
     User map(com.mapsTree.model.User user);
 
 }

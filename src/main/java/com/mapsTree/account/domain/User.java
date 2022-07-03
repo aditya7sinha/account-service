@@ -15,6 +15,8 @@ public class User {
     @SequenceGenerator(name="sequenceGenerator")
     @Column(name="id")
     private Long id;
+    @Column(name="userId")
+    private String userId;
     @Column(name="username",unique = true)
     private String username;
     @Column(name="password")
@@ -30,6 +32,10 @@ public class User {
     private String country;
     @Column(name="timeOfCreation")
     private String timeOfCreation;
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -67,6 +73,11 @@ public class User {
         return id;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+
     public String getUsername() {
         return username;
     }
@@ -96,8 +107,9 @@ public class User {
     }
 
 
-    public User(Long id, String username, String password, Integer age, String phoneNumber, HomeLocation homeLocation, String country, String timeOfCreation) {
+    public User(Long id,String userId, String username, String password, Integer age, String phoneNumber, HomeLocation homeLocation, String country, String timeOfCreation) {
         this.id = id;
+        this.userId=userId;
         this.username = username;
         this.password = password;
         this.age = age;
@@ -114,7 +126,9 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", userId=" + userId +
                 ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 ", age=" + age +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", homeLocation=" + homeLocation +

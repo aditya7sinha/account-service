@@ -126,10 +126,8 @@ definitions:
     type: "object"
     description: "returned user details"
     properties:
-      id:
-        type: "integer"
-        minimum: 1000
-        maximum: 9999
+      user_id:
+        type: "string"
         description: "unique number for each user"
       username:
         type: "string"
