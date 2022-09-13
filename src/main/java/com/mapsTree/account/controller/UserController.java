@@ -1,5 +1,7 @@
 package com.mapsTree.account.controller;
 
+import com.mapsTree.account.exception.UserAlreadyExists;
+import com.mapsTree.account.exception.UserNotFoundException;
 import com.mapsTree.account.service.UserService;
 import com.mapsTree.account.web.rest.mapper.UserLoginMapper;
 import com.mapsTree.account.web.rest.mapper.UserMapper;
@@ -33,7 +35,7 @@ public class UserController implements UserApi {
     }
 
     @Override
-    public ResponseEntity<User> userRegisterPost(UserCreate user) {
+    public ResponseEntity<User> userRegisterPost(UserCreate user) throws UserAlreadyExists {
         LOG.info("POST /user/register");
         String payload = user.toString();
         LOG.info("payload: {}",payload);
@@ -44,7 +46,7 @@ public class UserController implements UserApi {
     }
 
     @Override
-    public ResponseEntity<User> userLoginPost(UserLogin userLogin){
+    public ResponseEntity<User> userLoginPost(UserLogin userLogin) throws UserNotFoundException {
         LOG.info("POST /user/login");
         LOG.info("payload: {}",userLogin.toString());
         com.mapsTree.account.domain.User returnedUser = userService.findUser(userLoginMapper.map(userLogin));
