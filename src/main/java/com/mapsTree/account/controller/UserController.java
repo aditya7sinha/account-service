@@ -41,7 +41,6 @@ public class UserController implements UserApi {
         LOG.info("payload: {}",payload);
         com.mapsTree.account.domain.User savedUser = userService.insert(userMapper.map(user));
         LOG.info("Saved {}", savedUser.toString());
-//        return UserApiDelegate.super.userRegisterPost(user);
         return new ResponseEntity<>(userMapper.map(savedUser), HttpStatus.CREATED);
     }
 
