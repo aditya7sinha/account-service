@@ -1,0 +1,43 @@
+#version: '3.1'
+#services:
+#  app:
+#    container_name: springboot-accountservice
+#    image: 'accountservice-api-docker-boot.jar'
+#    build: ./
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - postgresqldb
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresqldb:5432/mapsTree
+#      - SPRING_DATASOURCE_USERNAME=postgres
+#      - SPRING_DATASOURCE_PASSWORD=postgres
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+#
+#  postgresqldb:
+#    image: postgres
+#    ports:
+#      - "5432:5432"
+#    environment:
+#      - POSTGRES_PASSWORD=postgres
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_DB=mapsTree
+version: "3.7"
+services:
+  api_service:
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres_db
+  postgres_db:
+    image: postgres
+    restart: always
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_DB: mapsTree
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
